@@ -4,32 +4,32 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class WebDriverConfig {
 
-    private WebDriver driver;
-    public WebDriver getWebDriver(String browser) {
-        if (driver == null) {
-            if ("chrome".equalsIgnoreCase(browser)) {
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-            } else if ("firefox".equalsIgnoreCase(browser)) {
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-            } else {
-                throw new IllegalArgumentException("Nieobsługiwana przeglądarka: " + browser);
-            }
+    @Value("${browser:chrome}")
+    private String browser;
+
+    @Bean
+    public WebDriver webDriver() {
+        if ("chrome".equalsIgnoreCase(browser)) {
+            WebDriverManager.chromedriver().setup();
+            return new ChromeDriver();
+        } else if ("firefox".equalsIgnoreCase(browser)) {
+            WebDriverManager.firefoxdriver().setup();
+            return new FirefoxDriver();
+        } else {
+            throw new IllegalArgumentException("Nieobsługiwana przeglądarka: " + browser);
         }
-        return driver;
     }
 
-    public void quitWebDriver() {
+    public void quitWebDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
-            driver = null;
         }
     }
 }
