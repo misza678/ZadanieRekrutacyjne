@@ -1,7 +1,6 @@
 Feature: Test Web
 
 
-  Scenario:
-    * Otwórz odpowiednią przeglądarkę: Chrome
-    * Przejdź na stronę: https://www.t-mobile.pl
-
+  Scenario: Test otwarcia strony w chrome
+  * Otwórz przeglądarkę: "firefox"
+  * Przejdź na stronę: "https://www.t-mobile.pl/"
