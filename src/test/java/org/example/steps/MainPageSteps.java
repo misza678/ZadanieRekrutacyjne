@@ -10,4 +10,12 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(classes = RunCucumberTest.class)
 public class MainPageSteps {
 
+    @Autowired
+    private MainPage mainPage;
+
+  @When("Z górnej belki wybierz")
+    public void chooseButtonFromHeader() {
+        mainPage.at();
+        mainPage.acceptCookies();
+    }
 }

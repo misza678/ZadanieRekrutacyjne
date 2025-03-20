@@ -12,7 +12,7 @@ import java.time.Duration;
 @Component
 public class MainPage {
 
-    private final WebDriver driver;
+
 
     @FindBy(xpath = "//button[contains(text(),'Urządzenia')]")
     private WebElement devicesButton;
@@ -21,24 +21,16 @@ public class MainPage {
     private WebElement acceptCookiesButton;
 
     // Konstruktor z wstrzyknięciem WebDrivera
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
-    public void waitForElementVisible(WebElement element) {
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.visibilityOf(element));
-    }
+
+
 
     public void at() {
-        waitForElementVisible(acceptCookiesButton);
+      //  waitForElementVisible(acceptCookiesButton);
     }
 
     public void acceptCookies() {
-        waitForElementVisible(acceptCookiesButton);
-        acceptCookiesButton.click();
+     //   waitForElementVisible(acceptCookiesButton);
+        //acceptCookiesButton.click();
     }
 }

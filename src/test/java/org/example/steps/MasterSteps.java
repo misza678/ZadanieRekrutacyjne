@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 @ContextConfiguration(classes = RunCucumberTest.class)
 public class MasterSteps {
-    @Autowired
     private WebDriver driver;
     private final WebDriverConfig webDriverConfig;
     @Autowired
@@ -42,9 +41,5 @@ public class MasterSteps {
 
 
 
-   /* @When("Z górnej belki wybierz")
-    public void chooseButtonFromHeader() {
-        mainPage.at();
-        mainPage.acceptCookies();
-    }*/
+
 }

@@ -14,7 +14,7 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @IncludeEngines("cucumber")  // Wskazuje silnik Cucumbera do uruchomienia
 @SelectClasspathResource("features")  // Ścieżka do katalogu, w którym znajdują się pliki .feature
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty,html:target/cucumber-report.html")  // Konfiguracja pluginu Cucumber
-@SpringBootTest(classes = TestConfig.class)  // Używamy Springa do konfiguracji testów
+@SpringBootTest(classes = YourSpringBootApplication.class)  // Używamy Springa do konfiguracji testów
 public class RunCucumberTest {
     // Testy Cucumber
 }
